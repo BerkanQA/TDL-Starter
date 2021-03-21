@@ -5,9 +5,9 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityNotFoundException;
+import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import com.qa.project.data.model.Employee;
@@ -30,11 +30,12 @@ public class EmployeeService {
 		this.employeeMapper = employeeMapper;
 	}
 	
-	public List<EmployeeDTO> readAllEmployee() {
+	@Transactional
+	public List<EmployeeDTO> readAllEmployees() {
 		List<Employee> employees = employeeRepository.findAll();
-		List<Employee> employeeDTOs = new ArrayList<EmployeeDTO>();
+		List<EmployeeDTO> employeeDTOs = new ArrayList<EmployeeDTO>();
 		
-		employees.forEach(employee -> employeeDTOs.add(employeeMapper.mapToDTO(Employee))); 
+		employees.forEach(employee -> employeeDTOs.add(employeeMapper.mapToDTO(employee))); 
 		
 		return employeeDTOs;
 	}
@@ -43,7 +44,7 @@ public class EmployeeService {
 		Optional<Employee> employee = employeeRepository.findById(id);
 		
 		if(employee.isPresent()) {
-			return employeeMapper.maptoDTO(employee.get());
+			return employeeMapper.mapToDTO(employee.get());
 		} else {
 			throw new EmployeeNotFoundException("Employee not found");
 		}
@@ -51,28 +52,35 @@ public class EmployeeService {
 	public EmployeeDTO readByName(String name) {
 		Employee employee = employeeRepository.getEmployeeByNameJPQL(name);
 		
-		return employeeMapper.maptoDTO(employee);
+		return employeeMapper.mapToDTO(employee);
 		
 	}
+
+	public EmployeeDTO createEmployee(Employee employee) {
+		Employee newEmployee = employeeRepository.save(employee);
+		
+		return employeeMapper.mapToDTO(newEmployee);
+	}
 	
+	@Transactional
 	public EmployeeDTO updateEmployee(Integer id, Employee employee) throws EntityNotFoundException {
 		Optional<Employee> employeeInDbOpt = employeeRepository.findById(id);
-		Employee EmployeeInDb;
+		Employee employeeInDb;
 		
 		if (employeeInDbOpt.isPresent()) {
-			employeesInDb = employeeInDbOpt.get();
+			employeeInDb = employeeInDbOpt.get();
 		} else {
 			throw new EmployeeNotFoundException("Employee is not here, QUACK!");
 		}
 		
 		employeeInDb.setName(employee.getName());
 		employeeInDb.setAge(employee.getAge());
-		employeeInDb.setHabitat(employee.getLevel());
-		employeeInDb.setColour(employee.getRole());
+		employeeInDb.setLevel(employee.getLevel());
+		employeeInDb.setRole(employee.getRole());
 		
 		Employee updatedEmployee = employeeRepository.save(employeeInDb);
 		
-		return EmployeeMapper.mapToDTO(updatedEmployee);
+		return employeeMapper.mapToDTO(updatedEmployee);
 	}
 	
 	public boolean deleteEmployee(Integer id) {

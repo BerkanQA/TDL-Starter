@@ -1,6 +1,7 @@
 package com.qa.project.mappers;
 
 
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -13,7 +14,7 @@ public class ProjectMapper {
 	private ModelMapper modelMapper;
 	
 	@Autowired
-	public ProjetMapper(ModelMapper modelMapper) {
+	public ProjectMapper(ModelMapper modelMapper) {
 		this.modelMapper = modelMapper;
 	}
 	
@@ -21,7 +22,9 @@ public class ProjectMapper {
 		return this.modelMapper.map(project, ProjectDTO.class);
 	}
 	
-	public Project mapToProject(ProjectDTO projectDTO)
+	public Project mapToProject(ProjectDTO projectDTO) {
+	
 	return this.modelMapper.map(projectDTO, Project.class);
 	
+}
 }

@@ -1,7 +1,8 @@
 package com.qa.project.service;
 
-import java.awt.List;
 import java.util.ArrayList;
+import java.util.List;
+
 
 import javax.persistence.EntityNotFoundException;
 
@@ -28,9 +29,9 @@ public class ProjectService {
 	
 	public List<ProjectDTO> readAllProjects() {
 		List<Project> projectsInDb = projectRepository.findAll();
-		List<Project> returnables = new ArrayList<ProjectDTO>();
+		List<ProjectDTO> returnables = new ArrayList<ProjectDTO>();
 		
-		employeesInDb.forEach(project -> returnables.add(projectMapper.mapToDTO(project)));
+		projectsInDb.forEach(project -> returnables.add(projectMapper.mapToDTO(project)));
 		
 		return returnables; 
 	}
@@ -46,7 +47,7 @@ public class ProjectService {
 		} else {
 			throw new EntityNotFoundException();
 		}
-		boolean doesItExistSTill = projectRepository.existsById(id);
+		boolean doesItExistStill = projectRepository.existsById(id);
 		
 		return !doesItExistStill;
 	}

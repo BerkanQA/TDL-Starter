@@ -17,12 +17,14 @@ public class EmployeeMapper {
 		this.modelMapper = modelMapper;
 	}
 	
-	public EmployeeDTO maptoDTO(Employee employee) {
+	public EmployeeDTO mapToDTO(Employee employee) {
 		return this.modelMapper.map(employee, EmployeeDTO.class);
 	}
 
 	public Employee mapToEmployee(Employee employeeDTO) {
-		return this.modelMapper.map(employeeDTO, Employee.class)
+		return this.modelMapper.map(employeeDTO, Employee.class);
 	}
+
+
 
 }

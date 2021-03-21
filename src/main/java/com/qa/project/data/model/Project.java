@@ -27,10 +27,10 @@ public class Project {
 	@Column(name = "name", unique = true)
 	private String name; 
 	
-	@OneToMany(mappedy = "project", fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "project", fetch = FetchType.LAZY)
 	
 	@OnDelete(action = OnDeleteAction.CASCADE)
-	private List<Project> projects;
+	private List<Employee> employees;
 	
 	public Project() {
 		
@@ -83,7 +83,7 @@ public class Project {
 		if (this == obj)
 			return true;
 		if(obj == null)
-			retun false;
+			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		Project other = (Project) obj;

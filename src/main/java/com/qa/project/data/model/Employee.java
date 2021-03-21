@@ -9,8 +9,10 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
-import com.sun.istack.NotNull;
 
 @Entity
 @Table(name = "duck")
@@ -39,7 +41,7 @@ public class Employee {
 	
 	@ManyToOne(targetEntity = Project.class, fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_project)id")
-	private Project project;  // The project table will hold a columnd fk project id
+	private Project project;  // The project table will hold a columns fk_project id
 	
 	public Employee() {
 		
@@ -90,7 +92,7 @@ public class Employee {
 		return role;
 	}
 
-	public void setRole(String colour) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
@@ -98,7 +100,7 @@ public class Employee {
 		return level;
 	}
 
-	public void setLevel(String habitat) {
+	public void setLevel(String level) {
 		this.level = level;
 	}
 
@@ -132,7 +134,7 @@ public class Employee {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Project other = (Project) obj;
+		Employee other = (Employee) obj;
 		if (age != other.age)
 			return false;
 		if (role == null) {
