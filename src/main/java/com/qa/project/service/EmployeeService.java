@@ -10,11 +10,11 @@ import javax.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.project.data.model.Employee;
 import com.qa.project.data.repository.EmployeeRepository;
 import com.qa.project.dto.EmployeeDTO;
 import com.qa.project.exceptions.EmployeeNotFoundException;
 import com.qa.project.mappers.EmployeeMapper;
+import com.qa.project.model.Employee;
 
 
 @Service

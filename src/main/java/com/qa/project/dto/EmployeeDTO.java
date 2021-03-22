@@ -1,12 +1,14 @@
 package com.qa.project.dto;
 
+import com.qa.project.model.Status;
+
 public class EmployeeDTO {
 
 	private int id;
 	private String name;
 	private String role;
 	private String level;
-
+	private Status status;
 	public EmployeeDTO() {
 		super();
 	}
@@ -89,6 +91,11 @@ public class EmployeeDTO {
 		} else if (!name.equals(other.name))
 			return false;
 		return true;
+	}
+
+	public Status getStatus() {
+		// TODO Auto-generated method stub
+		return status;
 	}
 
 }

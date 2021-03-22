@@ -2,6 +2,7 @@ package com.qa.controller;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -11,9 +12,9 @@ import org.springframework.test.context.jdbc.Sql.ExecutionPhase;
 import org.springframework.test.web.servlet.MockMvc;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qa.project.data.model.Employee;
 import com.qa.project.dto.EmployeeDTO;
 import com.qa.project.mappers.EmployeeMapper;
+import com.qa.project.model.Employee;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc // configures the MockMvc object (used to send requests to our API)

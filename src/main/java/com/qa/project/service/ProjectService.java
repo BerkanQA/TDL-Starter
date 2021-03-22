@@ -3,16 +3,15 @@ package com.qa.project.service;
 import java.util.ArrayList;
 import java.util.List;
 
-
 import javax.persistence.EntityNotFoundException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.qa.project.data.model.Project;
 import com.qa.project.data.repository.ProjectRepository;
 import com.qa.project.dto.ProjectDTO;
 import com.qa.project.mappers.ProjectMapper;
+import com.qa.project.model.Project;
 
 @Service
 public class ProjectService {
@@ -50,6 +49,11 @@ public class ProjectService {
 		boolean doesItExistStill = projectRepository.existsById(id);
 		
 		return !doesItExistStill;
+	}
+
+	public ProjectDTO updatedProject(int p_id, Project project) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

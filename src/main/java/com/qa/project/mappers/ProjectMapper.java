@@ -5,8 +5,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.qa.project.data.model.Project;
 import com.qa.project.dto.ProjectDTO;
+import com.qa.project.model.Project;
 
 @Component
 public class ProjectMapper {

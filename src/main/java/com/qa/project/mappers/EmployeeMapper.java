@@ -4,8 +4,8 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.qa.project.data.model.Employee;
 import com.qa.project.dto.EmployeeDTO;
+import com.qa.project.model.Employee;
 
 @Component
 public class EmployeeMapper {

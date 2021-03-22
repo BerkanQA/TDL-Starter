@@ -1,4 +1,4 @@
-package com.qa.project.data.model;
+package com.qa.project.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -15,13 +15,13 @@ import javax.validation.constraints.NotNull;
 
 
 @Entity
-@Table(name = "duck")
+@Table(name = "employee")
 public class Employee {
 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "emp_id")
+	@Column(name = "id")
 	private int id;
 	
 	@Column(name = "name", unique = true)
@@ -40,7 +40,7 @@ public class Employee {
 	
 	
 	@ManyToOne(targetEntity = Project.class, fetch = FetchType.LAZY)
-	@JoinColumn(name = "fk_project)id")
+	@JoinColumn(name = "fk_p_id")
 	private Project project;  // The project table will hold a columns fk_project id
 	
 	public Employee() {

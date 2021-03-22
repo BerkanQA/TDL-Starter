@@ -1,4 +1,4 @@
-package com.qa.project.data.model;
+package com.qa.project.model;
 
 import java.util.List;
 
